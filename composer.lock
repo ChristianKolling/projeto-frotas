@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2fd7b4a675dee4908f16f4e431ff58ad",
-    "content-hash": "595118c59375db0a3a7b716c5ce50ce4",
+    "hash": "ed6dd5081cbe91777195c66e88ba2b6e",
+    "content-hash": "4ce83615b932921504b78a38f119fc25",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -761,6 +761,44 @@
                 "orm"
             ],
             "time": "2016-01-05 21:34:58"
+        },
+        {
+            "name": "evandotpro/edp-module-layouts",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/EvanDotPro/EdpModuleLayouts.git",
+                "reference": "1e8947ae68fe126e651fe781aa84aae5632c3023"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/EvanDotPro/EdpModuleLayouts/zipball/1e8947ae68fe126e651fe781aa84aae5632c3023",
+                "reference": "1e8947ae68fe126e651fe781aa84aae5632c3023",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "./Module.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Evan Coury",
+                    "email": "me@evancoury.com",
+                    "homepage": "http://blog.evan.pro/"
+                }
+            ],
+            "description": "EdpModuleLayouts is very simple ZF2 module for making module-specific layouts insanely easy.",
+            "homepage": "https://github.com/EvanDotPro/EdpModuleLayouts",
+            "keywords": [
+                "zf2"
+            ],
+            "time": "2013-08-20 01:14:42"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
@@ -4704,7 +4742,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "doctrine/doctrine-orm-module": 20
+        "doctrine/doctrine-orm-module": 20,
+        "evandotpro/edp-module-layouts": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

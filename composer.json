@@ -11,6 +11,7 @@
         "php": ">=5.5",
         "zendframework/zendframework": "~2.5",
         "zendframework/zendpdf": "2.0.*",
-        "doctrine/doctrine-orm-module": "dev-master"
+        "doctrine/doctrine-orm-module": "dev-master",
+        "evandotpro/edp-module-layouts": "dev-master"
     }
 }
