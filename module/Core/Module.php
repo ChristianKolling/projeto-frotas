@@ -1,5 +1,6 @@
 <?php
-namespace Veiculos;
+
+namespace Core;
 
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;

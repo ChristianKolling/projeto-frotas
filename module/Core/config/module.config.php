@@ -1,26 +1,24 @@
 <?php
 
-namespace Veiculos;
-
 return array(
     'router' => array(
         'routes' => array(
-            'home' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
+            'core' => array(
+                'type' => 'Literal',
                 'options' => array(
-                    'route' => '/veiculos',
+                    'route' => '/core',
                     'defaults' => array(
-                        'controller' => 'Veiculos\Controller\Index',
+                        'controller' => 'Core\Controller\Index',
                         'action' => 'index',
                     ),
                 ),
             ),
-            'veiculos' => array(
+            'core' => array(
                 'type' => 'Literal',
                 'options' => array(
-                    'route' => '/veiculos',
+                    'route' => '/core',
                     'defaults' => array(
-                        '__NAMESPACE__' => 'Veiculos\Controller',
+                        '__NAMESPACE__' => 'Core\Controller',
                         'controller' => 'Index',
                         'action' => 'index',
                     ),
@@ -44,23 +42,13 @@ return array(
         ),
     ),
     'service_manager' => array(
-        'abstract_factories' => array(
-            'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
-            'Zend\Log\LoggerAbstractServiceFactory',
-        ),
         'invokables' => array(
-            'Veiculos\Service\CategoriaDeVeiculo' => 'Veiculos\Service\CategoriaDeVeiculo'
+            'Core\Service\EmailSender' => 'Core\Service\EmailSender',
         ),
     ),
     'controllers' => array(
         'invokables' => array(
-            'Veiculos\Controller\Index' => 'Veiculos\Controller\IndexController',
-            'Veiculos\Controller\CategoriasDeVeiculos' => 'Veiculos\Controller\CategoriasDeVeiculosController'
-        ),
-    ),
-    'view_manager' => array(
-        'template_path_stack' => array(
-            'veiculos' => __DIR__ . '/../view'
+            'Core\Controller\Verificacoes' => 'Core\Controller\VerificacoesController',
         ),
     ),
     'console' => array(

@@ -1,10 +1,7 @@
 <?php
+
 return array(
-    'module_layouts' => array(
-       'Frotas' => 'frotas/layout/layout',
-       'Veiculos' => 'veiculos/layout/layout'
-    ),
-        'doctrine' => array(
+    'doctrine' => array(
         'connection' => array(
             'orm_default' => array(
                 'driverClass' => 'Doctrine\DBAL\Driver\PDOPgSql\Driver',
