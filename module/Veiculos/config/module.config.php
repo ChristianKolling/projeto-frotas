@@ -58,6 +58,20 @@ return array(
             'Veiculos\Controller\CategoriasDeVeiculos' => 'Veiculos\Controller\CategoriasDeVeiculosController'
         ),
     ),
+    'doctrine' => array(
+        'driver' => array(
+            'application_entities' => array(
+                'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
+                'cache' => 'array',
+                'paths' => array(__DIR__ . '/../src/Veiculos/Model')
+            ),
+            'orm_default' => array(
+                'drivers' => array(
+                    'Veiculos\Model' => 'application_entities'
+                )
+            )
+        )
+    ),
     'view_manager' => array(
         'template_path_stack' => array(
             'veiculos' => __DIR__ . '/../view'
