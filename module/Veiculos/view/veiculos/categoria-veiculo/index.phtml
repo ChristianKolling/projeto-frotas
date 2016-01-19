@@ -1,0 +1,70 @@
+<section class="content-header">
+    <h1>
+        Categoria de Veículo
+        <small>Acompanhe aqui as categorias de veículos cadastrados</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="/veiculos">Veículos</a></li>
+        <li class="active">Categoria de Veículo</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a href="#" class="btn btn-primary btn-sm pull-left add-categoria">
+                                <b>+</b> Add nova Categoria</a>
+                        </div>
+                        <div class="col-md-6">
+                            <?php echo $this->form()->openTag($form); ?>
+                            <div id="custom-search-input">
+                                <div class="input-group">
+                                    <?php echo $this->formRow($form->get('search')); ?> 
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-info btn-sm" type="submit">
+                                            <i class="glyphicon glyphicon-search"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                            <?php echo $this->form()->closeTag($form); ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body table-responsive no-padding">
+                    <table class="table table-hover">
+                        <tr>
+                            <th>ID</th>
+                            <th>User</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Reason</th>
+                        </tr>
+                        <tr>
+                            <td>183</td>
+                            <td>John Doe</td>
+                            <td>11-7-2014</td>
+                            <td><span class="label label-success">Approved</span></td>
+                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    $(".add-categoria").click(function () {
+        bootbox.prompt("What is your name?", function (result) {
+            if (result === null) {
+                Example.show("Prompt dismissed");
+            } else {
+                Example.show("Hi <b>" + result + "</b>");
+            }
+        });
+    });
+</script>
