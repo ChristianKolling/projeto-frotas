@@ -16,10 +16,10 @@
                 <div class="box-header">
                     <div class="row">
                         <div class="col-md-6">
-                            <a href="#" class="btn btn-primary btn-sm pull-left add-categoria">
+                            <a href="#" class="btn btn-primary btn-sm pull-left" id="add-categoria">
                                 <b>+</b> Add nova Categoria</a>
                         </div>
-                        <div class="col-md-6">
+                        <!--                        <div class="col-md-6">
                             <?php echo $this->form()->openTag($form); ?>
                             <div id="custom-search-input">
                                 <div class="input-group">
@@ -32,39 +32,91 @@
                                 </div>
                             </div>
                             <?php echo $this->form()->closeTag($form); ?>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
                 <div class="box-body table-responsive no-padding">
-                    <table class="table table-hover">
-                        <tr>
-                            <th>ID</th>
-                            <th>User</th>
-                            <th>Date</th>
-                            <th>Status</th>
-                            <th>Reason</th>
-                        </tr>
-                        <tr>
-                            <td>183</td>
-                            <td>John Doe</td>
-                            <td>11-7-2014</td>
-                            <td><span class="label label-success">Approved</span></td>
-                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                        </tr>
+                    <table class="table table-hover" id="table-categoria-veiculo">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Descrição</th>
+                            </tr>
+                        </thead>
                     </table>
                 </div>
             </div>
         </div>
     </div>
 </section>
+<!-- Modal -->
+<div class="modal fade" id="modal-categoria" tabindex="-1" role="dialog" aria-labelledby="contactLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="panel-title" id="contactLabel"><span class="glyphicon glyphicon-info-sign"></span> Nova Categoria de Veículo</h4>
+            </div>
+            <?php echo $this->form()->openTag($formVeiculo); ?>
+            <?php echo $this->formRow($formVeiculo->get('id')); ?>
+            <div class="modal-body" style="padding: 5px;">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                        <?php echo $this->formRow($formVeiculo->get('descricao')); ?>
+                    </div>
+                </div>
+            </div>  
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success btn-vote" id="salvar-categoria">Salvar</button>
+                <button type="button" class="btn btn-danger btn-close" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+        <?php echo $this->form()->closeTag($formVeiculo); ?>
+    </div>
+</div>
+<style>
+    #table-categoria-veiculo_length{
+        display: none;
+    }
+</style>
 <script>
-    $(".add-categoria").click(function () {
-        bootbox.prompt("What is your name?", function (result) {
-            if (result === null) {
-                Example.show("Prompt dismissed");
-            } else {
-                Example.show("Hi <b>" + result + "</b>");
-            }
+    $(document).ready(function () {
+        $("#add-categoria").click(function () {
+            $('#modal-categoria').modal('show')
         });
+        $("#salvar-categoria").click(function (event) {
+            $.ajax({
+                type: "POST",
+                url: '/veiculos/categoria-veiculo/nova-categoria',
+                data: $("#categoria-veiculo").serialize(),
+                success: function (data)
+                {
+
+                }
+            });
+        });
+    });
+    $(document).ready(function () {
+        if ($("#table-categoria-veiculo").size() > 0) {
+            $("#table-categoria-veiculo").DataTable({
+                ajax: {
+                    url: '/veiculos/categoria-veiculo/get-categorias',
+                    dataSrc: ''
+                },
+                "paging": true,
+                "ordering": false,
+                "info": true,
+                "bFilter": false,
+                "pageLength": 8,
+                "aoColumns": [
+                    {
+                        "data": "id",
+                    },
+                    {
+                        "data": "descricao"
+                    },
+                ],
+            });
+        }
     });
 </script>

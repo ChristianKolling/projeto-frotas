@@ -6,11 +6,8 @@ use Zend\Form\Form as Form;
 
 class Busca extends Form {
 
-    public function __construct($placeholder) {
+    public function __construct($placeholder,$dataAtribute) {
         parent::__construct('busca');
-        $this->setAttribute('method', 'post');
-        $this->setAttribute('action', '');
-        
         $this->add(array(
             'name' => 'search',
             'type' => 'Text',
@@ -18,9 +15,9 @@ class Busca extends Form {
                 'label' => '',
             ),
             'attributes' => array(
-                'id' => 'search',
                 'class' => 'form-control input-sm',
                 'placeholder' => $placeholder,
+                'aria-controls' => $dataAtribute
             ),
         ));
     }
