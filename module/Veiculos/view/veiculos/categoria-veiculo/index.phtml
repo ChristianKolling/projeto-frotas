@@ -55,7 +55,7 @@
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="panel-title" id="contactLabel"><span class="glyphicon glyphicon-info-sign"></span> Nova Categoria de Veículo</h4>
+                <h4 class="panel-title" id="contactLabel"><span class="glyphicon glyphicon-info-sign"></span>   Nova Categoria de Veículo</h4>
             </div>
             <?php echo $this->form()->openTag($formVeiculo); ?>
             <?php echo $this->formRow($formVeiculo->get('id')); ?>
@@ -110,7 +110,9 @@
                 "ordering": true,
                 //"info": true,
                 "bFilter": false,
-                "pageLength": 9,
+                //"pageLength": 9,
+                "bProcessing": true,
+                "iDisplayLength": 9,
                 "aoColumns": [
                     {
                         "data": "id",
