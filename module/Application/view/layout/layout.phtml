@@ -10,8 +10,6 @@
                 ->appendName('viewport', 'width=device-width, initial-scale=1.0')
                 ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
         ?>
-
-        <!-- Le styles -->
         <?php
         echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
                 ->prependStylesheet($this->basePath('css/bootstrap-theme.min.css'))
@@ -29,7 +27,7 @@
         <!-- iCheck -->
         <link rel="stylesheet" href="/plugins/iCheck/flat/blue.css">
         <!-- Morris chart -->
-<!--        <link rel="stylesheet" href="/plugins/morris/morris.css">-->
+        <!--        <link rel="stylesheet" href="/plugins/morris/morris.css">-->
         <!-- jvectormap -->
         <link rel="stylesheet" href="/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
         <!-- Date Picker -->
@@ -38,7 +36,13 @@
         <link rel="stylesheet" href="/plugins/daterangepicker/daterangepicker-bs3.css">
         <!-- bootstrap wysihtml5 - text editor -->
         <link rel="stylesheet" href="/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-        <link rel="stylesheet" href="//cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css">
+        
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.10/css/dataTables.bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.0.1/css/responsive.bootstrap.min.css">
+        
+
+
         <!-- Scripts -->
         <?php
         echo $this->headScript()
@@ -170,6 +174,10 @@
         <script src="/dist/js/app.min.js"></script>
 <!--        <script src="/dist/js/pages/dashboard.js"></script>-->
         <script src="/dist/js/demo.js"></script>
-        <script type="text/javascript" src="/js/DataTables.js"></script>
+        
+        <script src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.10/js/dataTables.bootstrap.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.0.1/js/dataTables.responsive.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.0.1/js/responsive.bootstrap.min.js"></script>
     </body>
 </html>

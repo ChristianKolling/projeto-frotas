@@ -19,7 +19,7 @@
                             <a href="#" class="btn btn-primary btn-sm pull-left" id="add-categoria">
                                 <b>+</b> Add nova Categoria</a>
                         </div>
-                        <!--                        <div class="col-md-6">
+                        <div class="col-md-6">
                             <?php echo $this->form()->openTag($form); ?>
                             <div id="custom-search-input">
                                 <div class="input-group">
@@ -32,7 +32,7 @@
                                 </div>
                             </div>
                             <?php echo $this->form()->closeTag($form); ?>
-                        </div>-->
+                        </div>
                     </div>
                 </div>
                 <div class="box-body table-responsive no-padding">
@@ -98,16 +98,19 @@
     });
     $(document).ready(function () {
         if ($("#table-categoria-veiculo").size() > 0) {
-            $("#table-categoria-veiculo").DataTable({
-                ajax: {
+            $("#table-categoria-veiculo").dataTable({
+                "ajax": {
                     url: '/veiculos/categoria-veiculo/get-categorias',
                     dataSrc: ''
                 },
-                "paging": true,
-                "ordering": false,
-                "info": true,
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.10/i18n/Portuguese-Brasil.json"
+                },
+                //"paging": true,
+                "ordering": true,
+                //"info": true,
                 "bFilter": false,
-                "pageLength": 8,
+                "pageLength": 9,
                 "aoColumns": [
                     {
                         "data": "id",
