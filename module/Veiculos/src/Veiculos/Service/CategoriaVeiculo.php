@@ -13,7 +13,7 @@ class CategoriaVeiculo extends Service
 		return $query->getQuery()->getResult();
 	}
 
-	public function salvaCategoriaVeiculo($values){
+	public function salvarCategoriaVeiculo($values){
 	}
 
 	public function editarCategoriaVeiculo($id){

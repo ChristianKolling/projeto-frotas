@@ -1,12 +1,12 @@
 <section class="content-header">
     <h1>
-        Categoria de Veículo
-        <small>Acompanhe aqui as categorias de veículos cadastrados</small>
+        Modelo de Veículo
+        <small>Acompanhe aqui os modelos de veículos cadastrados</small>
     </h1>
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="/veiculos">Veículos</a></li>
-        <li class="active">Categoria de Veículo</li>
+        <li class="active">Modelo de Veículo</li>
     </ol>
 </section>
 <section class="content">
@@ -16,8 +16,8 @@
                 <div class="box-header">
                     <div class="row">
                         <div class="col-md-6">
-                            <a href="#" class="btn btn-primary btn-sm pull-left" id="add-categoria">
-                                <b>+</b> Add nova Categoria
+                            <a href="#" class="btn btn-primary btn-sm pull-left" id="add-modelo">
+                                <b>+</b> Add novo Modelo
                             </a>
                         </div>
                         <div class="col-md-6">
@@ -38,11 +38,12 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <table class="table table-striped table-bordered" id="table-categoria-veiculo" width="100%">
+                        <table class="table table-striped table-bordered" id="table-modelo-veiculo" width="100%">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Descrição</th>
+                                    <th>Categoria</th>
+                                    <th>Marca</th>
+                                    <th>Modelo</th>
                                     <th>Ações</th>
                                 </tr>
                             </thead>
@@ -54,28 +55,34 @@
     </div>
 </section>
 
-<div class="modal fade" id="modal-categoria" tabindex="-1" role="dialog" aria-labelledby="contactLabel" aria-hidden="true">
+<div class="modal fade" id="modal-modelo" tabindex="-1" role="dialog" aria-labelledby="contactLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="panel-title" id="contactLabel"><span class="glyphicon glyphicon-info-sign"></span>   Nova Categoria de Veículo</h4>
+                <h4 class="panel-title" id="contactLabel"><span class="glyphicon glyphicon-info-sign"></span>   Novo Modelo de Veículo</h4>
             </div>
-            <?php echo $this->form()->openTag($formVeiculo); ?>
-            <?php echo $this->formRow($formVeiculo->get('id')); ?>
+            <?php echo $this->form()->openTag($formModelo); ?>
+            <?php echo $this->formRow($formModelo->get('id')); ?>
             <div class="modal-body" style="padding: 5px;">
                 <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                        <?php echo $this->formRow($formVeiculo->get('descricao')); ?>
+                    <div class="col-lg-4 col-md-4 col-sm-4" style="padding-bottom: 10px;">
+                        <?php echo $this->formRow($formModelo->get('categoria')); ?>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4" style="padding-bottom: 10px;">
+                        <?php echo $this->formRow($formModelo->get('marca')); ?>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-" style="padding-bottom: 10px;">
+                        <?php echo $this->formRow($formModelo->get('descricao')); ?>
                     </div>
                 </div>
             </div>  
             <div class="modal-footer">
-                <button type="button" class="btn btn-success btn-vote" id="salvar-categoria">Salvar</button>
+                <button type="button" class="btn btn-success btn-vote" id="salvar-modelo">Salvar</button>
                 <button type="button" class="btn btn-danger btn-close" data-dismiss="modal">Fechar</button>
             </div>
         </div>
-        <?php echo $this->form()->closeTag($formVeiculo); ?>
+        <?php echo $this->form()->closeTag($formModelo); ?>
     </div>
 </div>
 
@@ -121,20 +128,20 @@
 </div>
 
 <style>
-    #table-categoria-veiculo_length{
+    #table-modelo-veiculo_length{
         display: none;
     }
 </style>
 <script>
     $(document).ready(function () {
-        $("#add-categoria").click(function () {
-            $('#modal-categoria').modal('show')
+        $("#add-modelo").click(function () {
+            $('#modal-modelo').modal('show')
         });
-        $("#salvar-categoria").click(function (event) {
+        $("#salvar-modelo").click(function (event) {
             $.ajax({
                 type: "POST",
-                url: '/veiculos/categoria-veiculo/nova-categoria',
-                data: $("#categoria-veiculo").serialize(),
+                url: '/veiculos/modelo-veiculo/novo-modelo',
+                data: $("#modelo-veiculo").serialize(),
                 success: function (data)
                 {
 
@@ -146,25 +153,25 @@
         });
     });
     $(document).ready(function () {
-        if ($("#table-categoria-veiculo").size() > 0) {
-            $("#table-categoria-veiculo").dataTable({
+        if ($("#table-modelo-veiculo").size() > 0) {
+            $("#table-modelo-veiculo").dataTable({
                 "ajax": {
-                    url: '/veiculos/categoria-veiculo/get-categorias',
+                    url: '/veiculos/modelo-veiculo/get-modelos',
                     dataSrc: ''
                 },
                 "language": {
                     "url": "//cdn.datatables.net/plug-ins/1.10.10/i18n/Portuguese-Brasil.json"
                 },
-                //"paging": true,
                 "ordering": true,
-                //"info": true,
                 "bFilter": false,
-                //"pageLength": 9,
                 "bProcessing": true,
                 "iDisplayLength": 8,
                 "aoColumns": [
                     {
-                        "data": "id",
+                        "data": "categoria"
+                    },
+                    {
+                        "data": "marca"
                     },
                     {
                         "data": "descricao"

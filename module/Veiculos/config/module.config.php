@@ -49,13 +49,17 @@ return array(
             'Zend\Log\LoggerAbstractServiceFactory',
         ),
         'invokables' => array(
-            'Veiculos\Service\CategoriaVeiculo' => 'Veiculos\Service\CategoriaVeiculo'
+            'Veiculos\Service\CategoriaVeiculo' => 'Veiculos\Service\CategoriaVeiculo',
+            'Veiculos\Service\MarcaVeiculo' => 'Veiculos\Service\MarcaVeiculo',
+            'Veiculos\Service\ModeloVeiculo' => 'Veiculos\Service\ModeloVeiculo'
         ),
     ),
     'controllers' => array(
         'invokables' => array(
             'Veiculos\Controller\Index' => 'Veiculos\Controller\IndexController',
             'Veiculos\Controller\CategoriaVeiculo' => 'Veiculos\Controller\CategoriaVeiculoController',
+            'Veiculos\Controller\MarcaVeiculo' => 'Veiculos\Controller\MarcaVeiculoController',
+            'Veiculos\Controller\ModeloVeiculo' => 'Veiculos\Controller\ModeloVeiculoController',
         ),
     ),
     'doctrine' => array(

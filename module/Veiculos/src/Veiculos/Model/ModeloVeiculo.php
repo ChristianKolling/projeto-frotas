@@ -24,13 +24,13 @@ class ModeloVeiculo
     protected $descricao;
     
     /**
-     * @ORM\OneToOne(targetEntity="MarcaVeiculo")
+     * @ORM\ManyToOne(targetEntity="MarcaVeiculo")
      * @ORM\JoinColumn(name="marca_id", referencedColumnName="id")
      */
     protected $marca;
             
     /**
-     * @ORM\OneToOne(targetEntity="CategoriaVeiculo")
+     * @ORM\ManyToOne(targetEntity="CategoriaVeiculo")
      * @ORM\JoinColumn(name="categoria_id", referencedColumnName="id")
      */
     protected $categoria;
