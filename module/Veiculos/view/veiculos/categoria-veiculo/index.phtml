@@ -20,6 +20,20 @@
                                 <b>+</b> Add nova Categoria
                             </a>
                         </div>
+                        <div class="col-md-6">
+                            <?php echo $this->form()->openTag($form); ?>
+                            <div id="custom-search-input">
+                                <div class="input-group">
+                                    <?php echo $this->formRow($form->get('search')); ?> 
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-info btn-sm" type="submit">
+                                            <i class="glyphicon glyphicon-search"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                            <?php echo $this->form()->closeTag($form); ?>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
@@ -85,5 +99,8 @@
     .dataTables_filter {
         margin-right: 10px;
         margin-top: -40px;
+    }
+    .dataTables_filter input{
+        
     }
 </style>
