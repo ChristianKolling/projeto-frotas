@@ -16,23 +16,9 @@
                 <div class="box-header">
                     <div class="row">
                         <div class="col-md-6">
-                            <a href="#" class="btn btn-primary btn-sm pull-left" id="add-categoria">
+                            <a href="/veiculos/categoria-veiculo/nova-categoria" class="btn btn-primary btn-sm pull-left" id="add-categoria">
                                 <b>+</b> Add nova Categoria
                             </a>
-                        </div>
-                        <div class="col-md-6">
-                            <?php echo $this->form()->openTag($form); ?>
-                            <div id="custom-search-input">
-                                <div class="input-group">
-                                    <?php echo $this->formRow($form->get('search')); ?> 
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-info btn-sm" type="submit">
-                                            <i class="glyphicon glyphicon-search"></i>
-                                        </button>
-                                    </span>
-                                </div>
-                            </div>
-                            <?php echo $this->form()->closeTag($form); ?>
                         </div>
                     </div>
                 </div>
@@ -53,99 +39,13 @@
         </div>
     </div>
 </section>
-
-<div class="modal fade" id="modal-categoria" tabindex="-1" role="dialog" aria-labelledby="contactLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="panel-title" id="contactLabel"><span class="glyphicon glyphicon-info-sign"></span>   Nova Categoria de Veículo</h4>
-            </div>
-            <?php echo $this->form()->openTag($formVeiculo); ?>
-            <?php echo $this->formRow($formVeiculo->get('id')); ?>
-            <div class="modal-body" style="padding: 5px;">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                        <?php echo $this->formRow($formVeiculo->get('descricao')); ?>
-                    </div>
-                </div>
-            </div>  
-            <div class="modal-footer">
-                <button type="button" class="btn btn-success btn-vote" id="salvar-categoria">Salvar</button>
-                <button type="button" class="btn btn-danger btn-close" data-dismiss="modal">Fechar</button>
-            </div>
-        </div>
-        <?php echo $this->form()->closeTag($formVeiculo); ?>
-    </div>
-</div>
-
-<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title custom_align" id="Heading">Edição de Registro</h4>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <input class="form-control " type="text" placeholder="Tiger Nixon">
-                </div>
-            </div>
-            <div class="modal-footer ">
-                <button type="button" class="btn btn-success btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Atualizar</button>
-            </div>
-        </div> 
-    </div> 
-</div>
-
-
-
-<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title custom_align" id="Heading">Excluir Registro</h4>
-            </div>
-            <div class="modal-body">
-
-                <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Você tem certeza que deseja excluir este registro?</div>
-
-            </div>
-            <div class="modal-footer ">
-                <button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Sim</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Não</button>
-            </div>
-        </div> 
-    </div> 
-</div>
-
 <style>
     #table-categoria-veiculo_length{
         display: none;
     }
 </style>
 <script>
-    $(document).ready(function () {
-        $("#add-categoria").click(function () {
-            $('#modal-categoria').modal('show')
-        });
-        $("#salvar-categoria").click(function (event) {
-            $.ajax({
-                type: "POST",
-                url: '/veiculos/categoria-veiculo/nova-categoria',
-                data: $("#categoria-veiculo").serialize(),
-                success: function (data)
-                {
-
-                }
-            });
-        });
-        $("#deletar-registro").click(function (event) {
-            console.log(event);
-        });
-    });
-    $(document).ready(function () {
+    $(document).ready(function() {
         if ($("#table-categoria-veiculo").size() > 0) {
             $("#table-categoria-veiculo").dataTable({
                 "ajax": {
@@ -155,11 +55,8 @@
                 "language": {
                     "url": "//cdn.datatables.net/plug-ins/1.10.10/i18n/Portuguese-Brasil.json"
                 },
-                //"paging": true,
                 "ordering": true,
-                //"info": true,
-                "bFilter": false,
-                //"pageLength": 9,
+                "bFilter": true,
                 "bProcessing": true,
                 "iDisplayLength": 8,
                 "aoColumns": [
@@ -171,9 +68,9 @@
                     },
                     {
                         "data": "id",
-                        mRender: function (data, type, row) {
-                            var botoes = '<button data-id="' + data + '" id="editar-registro"  class="btn btn-primary btn-xs" data-title="Editar" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button>';
-                            botoes += '<button data-id="' + data + '" id="deletar-registro" class="btn btn-danger btn-xs" data-title="Excluir" style="margin-left: 10px;"><span class="glyphicon glyphicon-trash"></span></button>';
+                        mRender: function(data, type, row) {
+                            var botoes = '<a href="/veiculos/categoria-veiculo/editar-categoria/id/' + data + '" id="editar-registro"  class="btn btn-primary btn-xs" data-title="Editar" ><span class="glyphicon glyphicon-pencil"></span></a>';
+                            botoes += '<a data-id="' + data + '" id="deletar-registro" class="btn btn-danger btn-xs" data-title="Excluir" style="margin-left: 10px;"><span class="glyphicon glyphicon-trash"></span></a>';
                             return botoes;
                         },
                         "width": "60px",
@@ -184,3 +81,9 @@
         }
     });
 </script>
+<style>
+    .dataTables_filter {
+        margin-right: 10px;
+        margin-top: -40px;
+    }
+</style>

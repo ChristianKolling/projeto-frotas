@@ -6,7 +6,7 @@ use Zend\Form\Form as Form;
 
 class Busca extends Form {
 
-    public function __construct($placeholder) {
+    public function __construct($placeholder, $id, $classe) {
         parent::__construct('busca');
         $this->add(array(
             'name' => 'search',
@@ -15,8 +15,9 @@ class Busca extends Form {
                 'label' => '',
             ),
             'attributes' => array(
-                'class' => 'form-control input-sm',
+                'class' => 'form-control input-sm '."$classe",
                 'placeholder' => $placeholder,
+                'id' => $id
             ),
         ));
     }
