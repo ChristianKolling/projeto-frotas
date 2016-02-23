@@ -5,6 +5,8 @@ return array(
         'Application',
         'Veiculos',
         'Core',
+        'Auth',
+        'Frotas',
         'DoctrineModule',
         'DoctrineORMModule',
     ),
